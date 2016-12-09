@@ -43,37 +43,26 @@ void loop() {
   if (millis() - orinTime >= ORIENTATION_XMIT) {
     
     SimbleeBLE.send(buf1, PACKETSIZE);    delay(7);
-//    Serial.println(buf1);
     SimbleeBLE.send(buf2, PACKETSIZE);    delay(7);
-//    Serial.println(buf2);
     SimbleeBLE.send(buf3, PACKETSIZE);    delay(7);
-//    Serial.println(buf3);
     SimbleeBLE.send(buf4, PACKETSIZE);    delay(7);
-//    Serial.println(buf4);
     orinTime = millis();
     delay(8);
   }
   
   if (millis() - enviTime >= ENVIRONMENTAL_XMIT) {
      SimbleeBLE.send(buf5, PACKETSIZE);delay(7);
-//     Serial.println(buf5);
      SimbleeBLE.send(buf6, PACKETSIZE);delay(7);
-//     Serial.println(buf6);
      SimbleeBLE.send(buf7, PACKETSIZE);delay(7);
-//     Serial.println(buf7);
      SimbleeBLE.send(buf8, PACKETSIZE);delay(7);
-//     Serial.println(buf8);
     enviTime = millis();
     delay(10);
   }
 
   if (millis() - metaTime >= METADATA_XMIT) {
       SimbleeBLE.send(buf9, PACKETSIZE);delay(7);
-//      Serial.println(buf9);
       SimbleeBLE.send(buf10, PACKETSIZE);delay(7);
-//      Serial.println(buf10);
       SimbleeBLE.send(buf11, PACKETSIZE);delay(7);
-//      Serial.println(buf11);
     metaTime = millis();
     publishTimeStamp();
     delay(8);
@@ -108,7 +97,6 @@ void splitCharArray(char target[], byte len) {
         endArray = true;
       }
     }
-//    Serial.println(buf);
     SimbleeBLE.send(buf, PACKETSIZE);delay(7);
   }
 
@@ -128,11 +116,9 @@ void SimbleeBLE_onDisconnect() {
 
 void SimbleeBLE_onAdvertisement(bool start) {
   if (start) {
-//    DEBUG_PRINTLN("ADVERTISING");
     SimbleeBLE.connectable = true;
   }
   else {
-//    DEBUG_PRINTLN("NOT ADVERTISING");
     SimbleeBLE.connectable = false;
   }  
 }
